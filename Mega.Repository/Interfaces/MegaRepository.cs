@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Mega.Engine.Interfaces
+namespace Mega.Repository
 {
-    public interface IAccountRepository
+    public interface MegaRepository<T>
     {
     }
 }

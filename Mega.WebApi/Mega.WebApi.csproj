@@ -21,6 +21,7 @@
     <ProjectReference Include="..\ClientEntities\ClientEntities.csproj" />
     <ProjectReference Include="..\Mega.Common\Mega.Common.csproj" />
     <ProjectReference Include="..\Mega.Engine\Mega.Engine.csproj" />
+    <ProjectReference Include="..\Mega.Repository\Mega.Repository.csproj" />
   </ItemGroup>
 
 </Project>

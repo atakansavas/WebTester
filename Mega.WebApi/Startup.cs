@@ -15,6 +15,9 @@ using Swashbuckle.AspNetCore.Swagger;
 using FluentValidation;
 using Mega.Engine.Account;
 using Mega.Engine.Interfaces;
+using Mega.WebApi.Middlewares;
+using ClientEntities.Account;
+using Mega.Repository;
 
 namespace Mega.WebApi
 {
@@ -30,8 +33,17 @@ namespace Mega.WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            services.AddSingleton<IAccountEngine, AccountEngine>();
+            services.AddMvc(opt =>
+            {
+                opt.Filters.Add(typeof(ValidatorActionFilter));
+            }).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            //services.AddScoped<LoginRequest>();
+
+
+            services.AddScoped<IAccountEngine, AccountEngine>();
+            services.AddScoped<IAccountRepository, AccountRepository>();
+
             //services.AddFluentValidation(fvc =>
             //    fvc.RegisterValidatorsFromAssemblyContaining<Startup>());
 
@@ -64,7 +76,8 @@ namespace Mega.WebApi
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
+            app.UseAuthentication();
             app.UseMvc();
 
             app.UseSwagger();
