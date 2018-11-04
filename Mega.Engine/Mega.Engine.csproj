@@ -8,4 +8,13 @@
     <Folder Include="Seo\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="8.0.100" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessEntities\BusinessEntities.csproj" />
+    <ProjectReference Include="..\ClientEntities\ClientEntities.csproj" />
+  </ItemGroup>
+
 </Project>
